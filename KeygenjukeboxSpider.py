@@ -12,9 +12,6 @@ class KeygenjukeboxSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        f = open("keygen.html", 'w')
         for line in response.xpath("//@href").extract():
             tmp = "http://keygenjukebox.net"+line
-            call(["wget", tmp])
-        f.close()
-        
+            call(["wget", tmp])        
